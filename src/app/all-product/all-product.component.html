@@ -1,0 +1,52 @@
+<app-header></app-header>
+
+<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="https://img.freepik.com/free-vector/realistic-horizontal-sale-banner-template-with-photo_23-2149017940.jpg" class="d-block w-100" alt="no image" height="450px" width="100%">
+      </div>
+      <div class="carousel-item">
+        <img src="https://www.shutterstock.com/image-photo/summer-sale-happy-young-woman-260nw-1123345376.jpg" alt="no image" height="450px" width="100%">
+      </div>
+      <div class="carousel-item">
+        <img src="https://img.freepik.com/premium-vector/today-shopping-day-with-special-offer-banner-design_624938-1337.jpg" class="d-block w-100" alt="no image" height="450px" width="100%1">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+<!-- Section-->
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            <div *ngFor="let product of allProduct | search:searchKey" class="col mb-5">
+                <div class="card h-100 shadow" >
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="product.image" alt="..." routerLink="/view-product/{{product.id}}" height="220px" />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title.slice(0,10)}}</h5>
+                            <!-- Product price-->
+                            $ {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent d-flex justify-content-between">
+                        <div class="text-center"><a class="btn btn-outline-danger" (click)="addWishlistItem(product)" ><i class="fa-solid fa-heart"></i></a></div>
+                        <div class="text-center"><a class="btn btn-outline-success" (click)="addToCart(product)"><i class="fa-solid fa-cart-shopping"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-danger" *ngIf="!allProduct">Nothing to Display</p>
+           
+        </div>
+    </div>
+</section>

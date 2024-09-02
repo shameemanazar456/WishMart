@@ -1,0 +1,36 @@
+<div class="row m-5">
+    <div class="col-md-2"></div>
+    <div class="col-md-4 d-flex align-items-center justify-content-center flex-column shadow p-5">
+       <div class="d-flex align-items-center justify-content-center flex-column border border-5 " style="border-color: #6389cc; width: 70px; height: 70px; border-radius: 50%;"> 
+        <i class="fa-regular fa-user fa-2xl" style="color: #90a9d5;"></i></div>
+        <h3 class="mt-3 " style="color: #90a9d5;"> Join Family</h3>
+        <form class="shadow d-flex align-items-center justify-content-center flex-column w-100 px-5 py-3" [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="mb-3">
+                <input type="text" placeholder="Enter UserName" class="form-control w-100" formControlName="username" name="uname">
+                <span *ngIf="registerForm.get('username')?.errors && registerForm.get('username')?.touched" class="text-danger">Invalid UserName</span>
+            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Enter Email" class="form-control w-100" formControlName="email" name="mail">
+                <span *ngIf="registerForm.get('email')?.errors && registerForm.get('email')?.touched" class="text-danger">Invalid UserName</span>            </div>
+            <div class="mb-3">
+                <input type="text" placeholder="Enter Password" class="form-control w-100" formControlName="password" name="upswd">
+                <span *ngIf="registerForm.get('password')?.errors && registerForm.get('password')?.touched" class="text-danger">Invalid UserName</span>
+            </div>
+            <div class="mb-3 w-100">
+                <button type="submit" class="btn w-100 text-light" style="background-color: #90a9d5;" >Register</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="col-md-4 rounded d-flex justify-content-center align-items-center flex-column" style="background-image: url('https://island.lk/wp-content/uploads/2022/08/shop1.png'); background-size: 650px; background-repeat: no-repeat; background-position: center; ">
+        <h3 class="text-light">
+            <i class="fa-brands fa-slack fa-beat-fade me-2 fa-xl"></i><b>WishMart</b>
+        </h3>
+        <h5 class="text-light">Already have an Accout</h5>
+        <h6 class="text-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem veritatis voluptate </h6>
+        <button class="btn btn-outline-light mt-3">Login</button>
+    </div>
+
+    <div class="col-md-2"></div>
+
+</div>

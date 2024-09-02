@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="row w-100 m-3 mt-5 pt-5 ">
+    <div class="col-md-6">
+        <img src="https://static.vecteezy.com/system/resources/previews/008/569/771/non_2x/delivery-man-wear-face-mask-vector.jpg" alt="" class="w-100">
+    </div>
+    <div class="col-md-6 d-flex justify-content-center align-items-center ">
+        <form *ngIf="!paymentStatus" [formGroup]="checkOutForm" action="" class="mt-3 pt-5 border p-md-3 rounded shadow w-75" >
+            <h3 class="text-center">Delivery Address</h3>
+            <div class="mb-3 mt-3">
+                <input type="text" class="form-control" placeholder="Name" formControlName="uname" name="uname">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Apartment Number" formControlName="flat" name="flat">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Place" formControlName="place" name="place">
+            </div>
+            <div class="mb-3">
+                <input type="text" class="form-control" placeholder="Pincode" formControlName="pincode" name="pincode">
+            </div>
+            <div class=" d-flex justify-content-between">
+                <button class="btn btn-warning" (click)="cancel()">Cancel</button>
+                <button class="btn btn-success" (click)="confirmAddress()"> Confirm Address</button>
+            </div>
+
+        </form>
+
+        <div *ngIf="paymentStatus" class="border rounded shadow  p-4" > 
+            <h3 class="text-danger mb-3 ">Confirm Delivery Address</h3>
+            <h5>Name: {{checkOutForm.value.uname}}</h5>
+            <h5>Apartment Number: {{checkOutForm.value.flat}}</h5>
+            <h5>Place Of Delivery: {{checkOutForm.value.place}}</h5>
+            <h5>Pincode: {{checkOutForm.value.pincode}}</h5>
+            <h5>GrandTotal: {{grandTotal}} </h5>
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-warning" (click)="back()">Back</button>
+                <button class="btn btn-success" (click)="payment()">Make Payment</button>
+            </div>
+            <div *ngIf="paystatus" class="mt-4">
+                <ngx-paypal [config]="payPalConfig"></ngx-paypal>
+            </div>
+            
+
+        </div>
+    </div>
+</div>
